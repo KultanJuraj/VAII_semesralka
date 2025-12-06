@@ -16,11 +16,11 @@ public class Card {
 
     @ManyToOne
     @JoinColumn(name = "card_type_id", referencedColumnName = "card_type_id")
-    private CardTypes cardType;   // ✅ direct relation
+    private CardTypes cardType;
 
     @ManyToOne
     @JoinColumn(name = "m_value_id", referencedColumnName = "m_value_id")
-    private ManaValue manaValue; // ✅ direct relation
+    private ManaValue manaValue;
 
     @Column(name = "oracle_text")
     private String oracleText;
