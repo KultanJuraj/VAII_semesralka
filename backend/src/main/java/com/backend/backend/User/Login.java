@@ -1,53 +1,41 @@
 package com.backend.backend.User;
 
-
 import jakarta.persistence.*;
+
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "login")
+public class Login {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "login_id")
+    private Integer loginId;
 
-    @Column(name = "username", nullable = false, length = 28)
+    @Column(unique = true, nullable = false, length = 28)
     private String username;
 
-    @Column(name = "rating", nullable = true)
-    private Double rating;
+    @Column(name = "e_mail", length = 30)
+    private String eMail;
 
-    public User(String username) {
-        this.username = username;
-        this.rating = 0.0;
-    }
+    @Column(name = "passwd", length = 64)
+    private String passwd;
 
-    public User() {
+    @OneToOne(mappedBy = "login", cascade = CascadeType.ALL)
+    private User user;
 
-    }
+    // getters and setters
+    public Integer getLoginId() { return loginId; }
+    public void setLoginId(Integer loginId) { this.loginId = loginId; }
 
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public Integer getUserId() {
-        return userId;
-    }
+    public String getEMail() { return eMail; }
+    public void setEMail(String eMail) { this.eMail = eMail; }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+    public String getPasswd() { return passwd; }
+    public void setPasswd(String passwd) { this.passwd = passwd; }
 
-    public Double getRating() {
-        return rating;
-    }
-
-    public void setRating(Double rating) {
-        this.rating = rating;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 }

@@ -1,14 +1,17 @@
 package com.backend.backend.Card;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "card_types")
+@JsonIgnoreProperties("cards")
 public class CardTypes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "card_type_id")
+    private Integer id;
 
 
     @Column(name = "car_type")
@@ -32,11 +35,11 @@ public class CardTypes {
         return legend;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 }
