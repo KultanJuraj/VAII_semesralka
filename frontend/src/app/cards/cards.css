@@ -1,0 +1,26 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 0 auto; 
+}
+.card{
+    width: 300px;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.filter-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
