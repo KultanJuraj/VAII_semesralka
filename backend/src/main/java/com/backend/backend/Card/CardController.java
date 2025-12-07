@@ -5,6 +5,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cards")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CardController {
 
     private final CardService cardService;
