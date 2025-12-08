@@ -1,13 +1,15 @@
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 300px);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
   margin: 0 auto; 
+  max-width: 1200px;
 }
 .card{
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
 }
 
 .image {
@@ -18,9 +20,5 @@
 .filter-form {
   min-width: 150px;
   max-width: 500px;
-  width: 100%;
-}
-
-.full-width {
   width: 100%;
 }

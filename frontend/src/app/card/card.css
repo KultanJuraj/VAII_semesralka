@@ -1,31 +1,35 @@
 .card-detail {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
+  gap: 64px;
+  padding: 64px;
   justify-content: center;
 }
 
 .card-image mat-card {
   width: auto;
+  max-width: 300px;
 }
 
 .card-info mat-card {
-  flex: 2 1 400px;
+  grid-column: span 2;
+  max-width: 100%;
 }
 
 mat-card-title {
-  font-size: 1.5rem;
   font-weight: bold;
+  font-size: clamp(20px, 5vw, 48px);
+  overflow-wrap: normal;
+  word-wrap: break-word;
 }
 
 .oracle-text {
-  margin-top: 0.5rem;
+  margin-top: 16px;
   font-style: italic;
 }
 
 .flavor-text {
-  margin-top: 1rem;
+  margin-top: 32px;
   color: #555;
   font-style: italic;
 }

@@ -5,18 +5,20 @@
 }
 
 .profile-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
 }
 
 .profile-field {
-  flex: 1;
+  width: 100%;
 }
 
 .actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   margin-top: 16px;
 }

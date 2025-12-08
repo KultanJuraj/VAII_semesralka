@@ -1,0 +1,14 @@
+.title {
+font-weight: 600;
+margin-bottom: 32px;
+text-align: center;
+}
+.offers {
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: center;
+  gap: 8px;
+}
+.offer{
+    max-width: 300px;
+}

@@ -30,6 +30,19 @@ export class Register {
 
   }
 
+checkStrength(password: string): string {
+  if (!password) return '';
+  let strength = 0;
+  if (password.length >= 6) strength++;
+  if (/[A-Z]/.test(password)) strength++;
+  if (/\d/.test(password)) strength++;
+  if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+  if (strength <= 1) return 'Weak';
+  if (strength === 2) return 'Medium';
+  return 'Strong';
+}
+
   ngOnInit(): void {
     this.registerGroup = this.fb.group({
      username: ['', [Validators.required, Validators.minLength(3), Validators.pattern('^[a-zA-Z0-9_]+$')]],

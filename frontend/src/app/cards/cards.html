@@ -5,7 +5,7 @@
     <input matInput [formControl]="searchControl" placeholder="Ex. necropotence">
   </mat-form-field>
   </form>
-<div class = "cards">
+<div class = "cards" >
   @for (card of filteredCards; track card.id) {
     <mat-card class = "card">  
             <img class = "image" mat-card-image [src]="card.cardImage" [alt]="card.name" [routerLink]="['/card', card.id]">

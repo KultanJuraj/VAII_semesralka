@@ -34,6 +34,13 @@ public class Card {
     @Column(name = "rarity")
     private String rarity;
 
+    @Column(name = "expansion")
+    private String expansion;
+
+    public String getExpansion() {
+        return expansion;
+    }
+
     public Integer getId() {
         return id;
     }

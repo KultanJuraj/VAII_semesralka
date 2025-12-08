@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MatCard } from '@angular/material/card';
 
 @Component({
   selector: 'app-colections',
-  imports: [],
+  imports: [MatCard],
   templateUrl: './colections.html',
   styleUrl: './colections.css',
 })

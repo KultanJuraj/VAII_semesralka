@@ -10,12 +10,13 @@ import { RouterLink } from "@angular/router";
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @Component({
   selector: 'app-cards',
-  imports: [MatCardModule, CommonModule, RouterLink, MatInputModule, MatFormFieldModule, FormsModule,ReactiveFormsModule
-  ],
+  imports: [MatCardModule, CommonModule, RouterLink, MatInputModule, MatFormFieldModule, FormsModule,ReactiveFormsModule,
+  MatGridListModule],
   templateUrl: './cards.html',
   styleUrl: './cards.css',
 })
