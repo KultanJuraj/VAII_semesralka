@@ -1,0 +1,83 @@
+<div class="container">
+  <mat-card class="register-card">
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="registerGroup" id="form">
+        <mat-form-field appearance="fill" class="full-width">
+          @if(registerGroup.get('username')?.hasError('required') 
+                && registerGroup.get('username')?.touched) {
+            <mat-error>
+                Username is required
+            </mat-error>
+        } @else if (registerGroup.get('username')?.hasError('minlength') 
+                && registerGroup.get('username')?.touched) {
+            <mat-error>
+                Username must be at least 3 characters
+            </mat-error>
+        } @else if (registerGroup.get('username')?.hasError('pattern') 
+                  && registerGroup.get('username')?.touched) {
+            <mat-error>
+                  Only letters, numbers, and underscores allowed
+            </mat-error>
+        }
+          <mat-label>Username</mat-label>
+          <input formControlName="username" matInput type="text" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+        @if (registerGroup.get('password')?.hasError('required')
+        && registerGroup.get('password')?.touched) {
+          <mat-error>
+            Password required
+          </mat-error>
+        } @else if (registerGroup.get('password')?.hasError('minlength')
+        && registerGroup.get('password')?.touched) {
+          <mat-error>
+            Password must be at least 6 characters long
+          </mat-error>
+        }  @if (registerGroup.get('password')?.value) {
+          <div>
+            Strength: {{ checkStrength(registerGroup.get('password')?.value) }}
+          </div>
+        }
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput type="password" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+  <mat-label>Repeat Password</mat-label>
+  <input matInput type="password" formControlName="repeatPassword" required>
+  @if(registerGroup.hasError('passwordMismatch')) {
+  <mat-error>
+    Passwords do not match
+  </mat-error>
+}
+</mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          @if (registerGroup.get('email')?.hasError('required')) {
+          <mat-error>
+              Email is required
+          </mat-error>
+          }
+          @else if(registerGroup.get('email')?.hasError('email')) {
+            <mat-error>
+              Invalid email format
+            </mat-error>
+    }
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput type="email" required>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary"
+        type="submit"
+        (click)="register()"
+        [disabled]="!registerGroup.valid">
+  Register
+</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

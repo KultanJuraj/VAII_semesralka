@@ -1,0 +1,18 @@
+.toolbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+  gap: 8px;
+}
+
+.left {
+  justify-self: start;
+}
+
+.name {
+  text-align: center;
+}
+
+.right {
+  justify-self: end;
+}

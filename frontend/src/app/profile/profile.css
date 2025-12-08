@@ -1,0 +1,24 @@
+.profile-card {
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.profile-field {
+  width: 100%;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  margin-top: 16px;
+}
