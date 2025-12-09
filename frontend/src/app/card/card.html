@@ -26,10 +26,16 @@
         <p><strong>Mana Value:</strong> {{ card?.manaValue?.total }}</p>
         <p><strong>Rarity:</strong> {{ card?.rarity }}</p>
         <p><strong>Expansion:</strong> {{card.expansion}}</p>
+        @if(card?.oracleText) {
         <p><strong>Oracle Text:</strong></p>
         <p class="oracle-text" [innerHTML]="card?.oracleText?.replace(/\\n/g,'<br>')">{{ card?.oracleText }}</p>
-        @if(card?.flavorText?.length != 0){
-        <p class="flavor-text">“{{ card?.flavorText }}”</p>}
+        }
+
+
+        @if(card?.flavorText){
+        <p><strong>Flavor Text:</strong></p>
+        <p class="flavor-text" [innerHTML]="card?.flavorText?.replace(/\\n/g,'<br>')">“{{ card?.flavorText }}”</p>
+        }
       </mat-card-content>
     </mat-card>
   </div>

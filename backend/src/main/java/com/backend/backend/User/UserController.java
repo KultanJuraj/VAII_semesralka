@@ -17,13 +17,12 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public User getUser(Authentication auth) {
-        return userService.getUserByUsername(auth.getName()).orElseThrow();
+    public void getUser(Authentication auth) {
     }
 
 
     @PostMapping("/postUser")
-    public void postUser(@RequestBody User user){
+    public void postUser(@RequestBody User user) {
         userService.saveUser(user);
     }
 
@@ -32,6 +31,7 @@ public class UserController {
         user.setUserId(userId);
         return userService.updateUser(userId, user);
     }
+
     @GetMapping("/userLogged")
     public ResponseEntity<User> getCurrentUser(Authentication auth) {
         return userService.getUserByUsername(auth.getName()).map(ResponseEntity::ok).orElseThrow();
