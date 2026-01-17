@@ -25,7 +25,7 @@ export class Cards {
   filteredCards: CardI[] = []; 
   searchControl = new FormControl('');
 
-  constructor(private cardsService:CardsService, private cdRef: ChangeDetectorRef) {
+  constructor(private cardsService:CardsService) {
 
   }
   ngOnInit(): void {
@@ -41,7 +41,7 @@ export class Cards {
   }
 
   get (): void {
-    this.cardsService.getCards().subscribe(cards => {this.cards = cards, this.filteredCards = cards, this.cdRef.detectChanges()});
+    this.cardsService.getCards().subscribe(cards => {this.cards = cards, this.filteredCards = cards});
 
     
   }
