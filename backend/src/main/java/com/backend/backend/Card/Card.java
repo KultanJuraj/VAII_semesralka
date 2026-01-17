@@ -1,6 +1,10 @@
 package com.backend.backend.Card;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "card")
@@ -28,18 +32,9 @@ public class Card {
     @Column(name = "flavor_text")
     private String flavorText;
 
-    @Column(name = "card_image")
-    private String cardImage;
-
-    @Column(name = "rarity")
-    private String rarity;
-
-    @Column(name = "expansion")
-    private String expansion;
-
-    public String getExpansion() {
-        return expansion;
-    }
+    @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<CardVersion> versions = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -65,12 +60,14 @@ public class Card {
         return flavorText;
     }
 
-    public String getCardImage() {
-        return cardImage;
+    public void addVersion(CardVersion version) {
+        version.setCard(this);
+        versions.add(version);
     }
 
-    public String getRarity() {
-        return rarity;
+    public void removeVersion(CardVersion version) {
+        versions.remove(version);
+        version.setCard(null);
     }
 }
 

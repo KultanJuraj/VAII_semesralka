@@ -1,5 +1,6 @@
 package com.backend.backend.Card;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -14,15 +15,18 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    // GET /cards
     @GetMapping
     public List<Card> getAllCards() {
         return cardService.getAllCards();
     }
 
-    // GET /cards/{id}
     @GetMapping("/{id}")
-    public Card getCardById(@PathVariable Integer id) {
-        return cardService.getCardById(id);
+    public ResponseEntity<Card> getCard(@PathVariable Integer id,
+                                        @RequestParam(defaultValue = "false") boolean includeVersions) {
+        return (includeVersions
+                ? cardService.getCardWithVersions(id)
+                : cardService.getCard(id))
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

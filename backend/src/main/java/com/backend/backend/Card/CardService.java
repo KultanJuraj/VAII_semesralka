@@ -2,6 +2,7 @@ package com.backend.backend.Card;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CardService {
@@ -19,5 +20,13 @@ public class CardService {
     public Card getCardById(Integer id) {
         return cardRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Card not found: " + id));
+    }
+
+    public Optional<Card> getCardWithVersions(Integer id) {
+        return cardRepository.findWithVersionsById(id);
+    }
+
+    public Optional<Card> getCard(Integer id) {
+        return cardRepository.findById(id);
     }
 }

@@ -5,9 +5,7 @@ export interface CardI{
     oracleText?:string;
     flavorText?:string;
     manaValue?:ManaValue;
-    cardImage:string;
-    rarity:string;
-    expansion:string;
+    versions:CardVersion[];
 }
 export interface ManaValue {
     id:number;
@@ -24,4 +22,11 @@ export interface CardType{
     subType:string;
     type:string;
     legend:boolean;
+}
+ 
+export interface CardVersion {
+    id:number;
+    image:string;
+    rarity:string;
+    expansion:string;
 }

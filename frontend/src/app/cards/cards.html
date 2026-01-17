@@ -8,7 +8,7 @@
 <div class = "cards" >
   @for (card of filteredCards; track card.id) {
     <mat-card class = "card">  
-            <img class = "image" mat-card-image [src]="card.cardImage" [alt]="card.name" [routerLink]="['/card', card.id]">
+            <img class = "image" mat-card-image [src]="card.versions[0].image" [alt]="card.name" [routerLink]="['/card', card.id]">
     </mat-card>
     }
 </div>

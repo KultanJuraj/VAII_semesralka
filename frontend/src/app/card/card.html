@@ -2,7 +2,7 @@
 <div class = "card-detail">
 <div class="card-image">
     <mat-card>
-      <img mat-card-image [src]="card?.cardImage" [alt]="card?.name">
+      <img mat-card-image [src]="card.versions[0].image" [alt]="card?.name">
     </mat-card>
   </div>
   <div class="card-info">
@@ -24,8 +24,8 @@
       </mat-card-header>
        <mat-card-content>
         <p><strong>Mana Value:</strong> {{ card?.manaValue?.total }}</p>
-        <p><strong>Rarity:</strong> {{ card?.rarity }}</p>
-        <p><strong>Expansion:</strong> {{card.expansion}}</p>
+        <p><strong>Rarity:</strong> {{ card.versions[0].rarity }}</p>
+        <p><strong>Expansion:</strong> {{card.versions[0].expansion}}</p>
         @if(card?.oracleText) {
         <p><strong>Oracle Text:</strong></p>
         <p class="oracle-text" [innerHTML]="card?.oracleText?.replace(/\\n/g,'<br>')">{{ card?.oracleText }}</p>
