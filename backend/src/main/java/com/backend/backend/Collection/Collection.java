@@ -14,7 +14,7 @@ public class Collection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "collection_id")
-    Integer id;
+    Integer collectionId;
 
     @Column(name = "publicity")
     Boolean publicity;
@@ -46,7 +46,7 @@ public class Collection {
     }
 
     public Integer getId() {
-        return this.id;
+        return this.collectionId;
     }
 
     public void setVersion(CardVersion cardVersion) {

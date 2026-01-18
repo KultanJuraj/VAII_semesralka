@@ -19,6 +19,6 @@ public interface CollectionRepository extends JpaRepository<Collection, Integer>
     Optional<Collection> findByIdAndUser_UserId(Integer collectionId, Integer userId);
 
     Optional<Collection> findByUser_UserIdAndVersion_Id(Integer userId, Integer versionId);
-    List<CardVersion> findByUserIdAndColleciontId(Integer userId, Integer id);
+    List<CardVersion> findByCollectionId(Integer CollectionId);
 
 }

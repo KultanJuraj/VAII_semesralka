@@ -107,6 +107,8 @@ public class CollectionControler {
         }
     }
 
-    @GetMapping("{userId}/{id}")
-    public List<CardVersion>
+    @GetMapping("/{collectionId}")
+    public List<CardVersion> getCollection(@PathVariable Integer collectionId){
+        return this.collectionService.getCollectionById(collectionId);
+    }
 }

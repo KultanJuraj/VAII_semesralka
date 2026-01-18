@@ -28,11 +28,10 @@ public class CollectionService {
         return collectionRepository.findByUserUserId(userId);
     }
 
-
-    @Transactional(readOnly = true)
-    public List<Collection> getCollectionsForUser(Integer userId) {
-        return collectionRepository.findByUser_UserId(userId);
+    public List<CardVersion> getCollectionById(Integer colletionId) {
+        return collectionRepository.findByCollectionId(colletionId);
     }
+
 
 
     @Transactional
