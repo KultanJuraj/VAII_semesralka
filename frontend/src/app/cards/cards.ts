@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CardI } from '../interfaces/card'
 import { CardsService } from '../cards'
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
+import { MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule} from '@angular/forms';
+import { MatCardModule} from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from "@angular/router";
 import { FormControl } from '@angular/forms';
@@ -22,11 +22,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 })
 export class Cards {
   cards:CardI[] = [];
-  filteredCards: CardI[] = []; 
+  filteredCards: CardI[]|undefined; 
   searchControl = new FormControl('');
 
-  constructor(private cardsService:CardsService) {
-
+  constructor(private cardsService:CardsService, private cdRef: ChangeDetectorRef,) {
+    
   }
   ngOnInit(): void {
     this.get();
@@ -41,9 +41,7 @@ export class Cards {
   }
 
   get (): void {
-    this.cardsService.getCards().subscribe(cards => {this.cards = cards, this.filteredCards = cards});
-
-    
+    this.cardsService.getCards().subscribe(cards => {this.cards = cards, this.filteredCards = cards, this.cdRef.detectChanges()});
   }
 
 

@@ -2,6 +2,7 @@ package com.backend.backend.Collection;
 
 
 import com.backend.backend.Card.Card;
+import com.backend.backend.Card.CardVersion;
 import com.backend.backend.User.User;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -16,13 +17,13 @@ public class Collection {
     Integer id;
 
     @Column(name = "publicity")
-    String publicity;
+    Boolean publicity;
 
 
     @ManyToOne
-    @JoinColumn(name = "card_id", referencedColumnName = "card_id", nullable = false)
+    @JoinColumn(name = "version_id", referencedColumnName = "version_id", nullable = false)
     @JsonBackReference
-    Card card;
+    CardVersion cardVersion;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
@@ -32,32 +33,32 @@ public class Collection {
     String name;
 
 
-    public String getPublicity() {
+    public Boolean getPublicity() {
         return publicity;
     }
 
-    public Card getCard() {
-        return card;
+    public CardVersion getCard() {
+        return this.cardVersion;
     }
 
     public User getUser() {
-        return user;
+        return this.user;
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
-    public void setCard(Card card) {
-        this.card = card;
+    public void setVersion(CardVersion cardVersion) {
+        this.cardVersion = cardVersion;
     }
 
-    public void setPublicity(String publicity) {
+    public void setPublicity(Boolean publicity) {
         this.publicity = publicity;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {

@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/putUser/**").permitAll()
                         .requestMatchers("/cards/**").permitAll()
+                        .requestMatchers("/cards/version/**").permitAll()
                         .requestMatchers("/user").authenticated()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated()

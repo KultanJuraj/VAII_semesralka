@@ -24,9 +24,16 @@ httpOptions = {
     return this.http.get<CollectionI[]>(this.collcectionUrl + "/user/" + id);
   }
 
+  createCollectionForUser(userId: number, name: string, publicity: boolean): Observable<CollectionI> {
+    console.log(name);
+    return this.http.post<CollectionI>(`${this.collcectionUrl}/users/${userId}/collections`, { name, publicity });
+  }
 
+  getCollectionsForUser(userId: number): Observable<CollectionI[]> {
+    return this.http.get<CollectionI[]>(`${this.collcectionUrl}/users/${userId}/collections`);
+  }
 
-
-
-  
+  addVersionToCollection(userId: number, collectionId: number, versionId: number): Observable<CollectionI> {
+    return this.http.post<CollectionI>(`${this.collcectionUrl}/users/${userId}/collections/${collectionId}/version`, { versionId });
+  }
 }

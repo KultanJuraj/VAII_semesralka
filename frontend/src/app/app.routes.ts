@@ -7,6 +7,7 @@ import { Colections } from './colections/colections';
 import { Register } from './register/register';
 import { Profile } from './profile/profile';
 import { AuthGuard } from './auth.guard/auth.guard'
+import { CollectionForm } from './collection-form/collection-form';
 
 export const routes: Routes = [
     { path: 'home', component: Homepage},
@@ -17,4 +18,5 @@ export const routes: Routes = [
     { path: 'register', component: Register},
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'profile', component: Profile, canActivate: [AuthGuard] },
+    { path: 'collection-form', component: CollectionForm, canActivate: [AuthGuard]}
 ];

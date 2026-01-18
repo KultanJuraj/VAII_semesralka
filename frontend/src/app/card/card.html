@@ -4,6 +4,9 @@
     <mat-card>
       <img mat-card-image [src]="card.versions[0].image" [alt]="card?.name">
     </mat-card>
+    <button mat-button color="primary" (click)="openVersionsDialog()">
+  Show versions
+</button>
   </div>
   <div class="card-info">
     <mat-card>

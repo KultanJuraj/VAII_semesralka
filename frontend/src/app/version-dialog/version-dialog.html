@@ -1,0 +1,19 @@
+<div class="versions">
+  @for (version of versions; track version.id) {
+    <mat-card class="version">
+      <div class="image-wrap">
+        <img class="image" mat-card-image [src]="version.image" [alt]="version">
+        <div class="badge rarity-badge">{{ version.rarity }}</div>
+        <div class="badge expansion-badge">{{ version.expansion }}</div>
+      </div>
+      <div class="meta">
+        <div class="meta-left">
+          <div class="expansion">{{ version.expansion }}</div>
+        </div>
+        <div class="meta-right">
+          <div class="rarity">{{ version.rarity }}</div>
+        </div>
+      </div>
+    </mat-card>
+  }
+</div>
