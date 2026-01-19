@@ -11,10 +11,11 @@ import { CollectionI } from '../interfaces/collection';
 import { UserService } from '../user';
 import { ChangeDetectorRef } from '@angular/core';
 import { UserI } from '../interfaces/userI';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-collectio-form',
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatButtonModule, RouterLink],
   templateUrl: './collection-form.html',
   styleUrl: './collection-form.css',
 })

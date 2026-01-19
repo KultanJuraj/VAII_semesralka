@@ -16,7 +16,7 @@ export const routes: Routes = [
     { path: 'login', component: Login},
     { path: 'cards', component: Cards },
     { path: 'card/:id', component: Card },
-    { path: 'colections', component: Colections, canActivate: [AuthGuard]},
+    { path: 'collections', component: Colections, canActivate: [AuthGuard]},
     { path: 'register', component: Register},
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'profile', component: Profile, canActivate: [AuthGuard] },

@@ -29,10 +29,6 @@ httpOptions = {
     return this.http.post<CollectionI>(`${this.collcectionUrl}/users/${userId}`, { name, publicity });
   }
 
-  getCollectionsForUser(userId: number): Observable<CollectionI[]> {
-    return this.http.get<CollectionI[]>(`${this.collcectionUrl}/users/${userId}`);
-  }
-
   addVersionToCollection(collectionId: number, versionId: number): Observable<CollectionI> {
     return this.http.post<CollectionI>(`${this.collcectionUrl}/${collectionId}/versions/${versionId}`, { versionId });
   }
@@ -44,4 +40,11 @@ httpOptions = {
   removeVersion(collectionId:number,id:number):Observable<void> {
     return this.http.delete<void>(`${this.collcectionUrl}/${collectionId}/versions/${id}`);
   }
+
+  updateCollection(collectionId:number, collection:CollectionI):Observable<CollectionI>{
+    return this.http.put<CollectionI>(`${this.collcectionUrl}/${collectionId}`, collection);
+  }
+  deleteCollection(collectionId: number): Observable<void> {
+  return this.http.delete<void>(`${this.collcectionUrl}/${collectionId}`);
+}
 }

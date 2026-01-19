@@ -22,7 +22,7 @@ export class Profile {
   
   }
   profile = {
-    id:0,
+  userId:0,
   username: '',
   email: '',
   rating:0.0
@@ -40,13 +40,6 @@ ngOnInit() {
 
    toggleEdit(field: keyof typeof this.edit) {
     this.edit[field] = !this.edit[field];
-    if (!this.edit[field]) {
-      this.saveField(field);
-    }
-  }
-
-  saveField(field: keyof typeof this.edit): void{
-    
   }
 
 
@@ -54,7 +47,7 @@ ngOnInit() {
     if(this.currUser && this.currUser.userId) {
     this.currUser.username = this.profile.username;
     this.currUser.email = this.profile.email;
-    this.userService.updateUser(this.profile.id, this.currUser).subscribe(()=>console.log("Profile updated"))
+    this.userService.updateUser(this.profile.userId, this.currUser).subscribe(()=>console.log("Profile updated"))
     }
 }
 
