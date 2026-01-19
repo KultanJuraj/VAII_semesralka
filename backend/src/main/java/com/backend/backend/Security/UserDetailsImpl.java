@@ -53,4 +53,8 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
+    public Integer getUserId() {
+        return this.user.getUserId();
+    }
+
 }

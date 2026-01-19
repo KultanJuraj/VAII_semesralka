@@ -1,12 +1,12 @@
 package com.backend.backend.Collection;
 
-
 import com.backend.backend.Card.CardVersion;
+import com.backend.backend.User.User;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "collection_item")
-public class CollectionHeader {
+public class CollectionItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,22 +14,20 @@ public class CollectionHeader {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "collection_id", referencedColumnName = "collectio_id")
-    @Column(name = "collection_id")
-    private CollectionHeader collectionHeader;
+    @JoinColumn(name = "collection_id", referencedColumnName = "collection_id")
+    private CollectionHeader collection;
 
     @ManyToOne
     @JoinColumn(name = "version_id", referencedColumnName = "version_id")
-    @Column(name = "version_id")
     private CardVersion cardVersion;
 
 
-    public CollectionHeader getCollectionHeader() {
-        return collectionHeader;
+    public CollectionHeader getCollection() {
+        return collection;
     }
 
-    public void setCollectionHeader(CollectionHeader collectionHeader) {
-        this.collectionHeader = collectionHeader;
+    public void setCollection(CollectionHeader collection) {
+        this.collection = collection;
     }
 
     public CardVersion getCardVersion() {
@@ -43,4 +41,7 @@ public class CollectionHeader {
     public Integer getId() {
         return id;
     }
+
+
 }
+

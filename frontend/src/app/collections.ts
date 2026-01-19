@@ -21,19 +21,23 @@ httpOptions = {
 
 
   getCollections(id:number):Observable<CollectionI[]> {
-    return this.http.get<CollectionI[]>(this.collcectionUrl + "/user/" + id);
+    return this.http.get<CollectionI[]>(this.collcectionUrl + "/users/" + id);
   }
 
   createCollectionForUser(userId: number, name: string, publicity: boolean): Observable<CollectionI> {
     console.log(name);
-    return this.http.post<CollectionI>(`${this.collcectionUrl}/users/${userId}/collections`, { name, publicity });
+    return this.http.post<CollectionI>(`${this.collcectionUrl}/users/${userId}`, { name, publicity });
   }
 
   getCollectionsForUser(userId: number): Observable<CollectionI[]> {
-    return this.http.get<CollectionI[]>(`${this.collcectionUrl}/users/${userId}/collections`);
+    return this.http.get<CollectionI[]>(`${this.collcectionUrl}/users/${userId}`);
   }
 
   addVersionToCollection(userId: number, collectionId: number, versionId: number): Observable<CollectionI> {
-    return this.http.post<CollectionI>(`${this.collcectionUrl}/users/${userId}/collections/${collectionId}/version`, { versionId });
+    return this.http.post<CollectionI>(`${this.collcectionUrl}/${collectionId}/versions/${versionId}`, { versionId });
+  }
+
+  getCollection(id:number):Observable<CollectionI> {
+    return this.http.get<CollectionI>(this.collcectionUrl + "/" + id);
   }
 }

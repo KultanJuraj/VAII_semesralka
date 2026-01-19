@@ -25,7 +25,7 @@ export class Cards {
   filteredCards: CardI[]|undefined; 
   searchControl = new FormControl('');
 
-  constructor(private cardsService:CardsService, private cdRef: ChangeDetectorRef,) {
+  constructor(private cardsService:CardsService, private cdRef: ChangeDetectorRef) {
     
   }
   ngOnInit(): void {
