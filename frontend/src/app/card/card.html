@@ -2,7 +2,7 @@
 <div class = "card-detail">
 <div class="card-image">
     <mat-card>
-      <img mat-card-image [src]="card.versions[0].image" [alt]="card?.name">
+      <img mat-card-image [src]="card.versions[0].image" [alt]="card.name">
     </mat-card>
     <button mat-button color="primary" (click)="openVersionsDialog()">
   Show versions
@@ -12,13 +12,13 @@
     <mat-card>
       <mat-card-header>
         <div class="name">
-        <mat-card-title>{{ card?.name }}</mat-card-title>
+        <mat-card-title>{{ card.name }}</mat-card-title>
         </div>
         <mat-card-subtitle>
           <br>
           <br>
-          {{ card?.cardType?.type }}
-          @if(card?.cardType?.legend){
+          {{ card.cardType.type }}
+          @if(card.cardType.legend){
           <span> (Legendary)</span>}
           @if (card.cardType.subType) {
             - {{card.cardType.subType}}
@@ -26,18 +26,18 @@
         </mat-card-subtitle>
       </mat-card-header>
        <mat-card-content>
-        <p><strong>Mana Value:</strong> {{ card?.manaValue?.total }}</p>
+        <p><strong>Mana Value:</strong> {{ card.manaValue?.total }}</p>
         <p><strong>Rarity:</strong> {{ card.versions[0].rarity }}</p>
         <p><strong>Expansion:</strong> {{card.versions[0].expansion}}</p>
-        @if(card?.oracleText) {
+        @if(card.oracleText) {
         <p><strong>Oracle Text:</strong></p>
-        <p class="oracle-text" [innerHTML]="card?.oracleText?.replace(/\\n/g,'<br>')">{{ card?.oracleText }}</p>
+        <p class="oracle-text" [innerHTML]="card.oracleText.replace(/\\n/g,'<br>')">{{ card.oracleText }}</p>
         }
 
 
-        @if(card?.flavorText){
+        @if(card.flavorText){
         <p><strong>Flavor Text:</strong></p>
-        <p class="flavor-text" [innerHTML]="card?.flavorText?.replace(/\\n/g,'<br>')">“{{ card?.flavorText }}”</p>
+        <p class="flavor-text" [innerHTML]="card.flavorText.replace(/\\n/g,'<br>')">“{{ card.flavorText }}”</p>
         }
       </mat-card-content>
     </mat-card>
