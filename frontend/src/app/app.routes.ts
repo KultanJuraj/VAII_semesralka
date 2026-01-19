@@ -9,6 +9,7 @@ import { Profile } from './profile/profile';
 import { AuthGuard } from './auth.guard/auth.guard'
 import { CollectionForm } from './collection-form/collection-form';
 import { Collection } from './collection/collection';
+import { EditCollection } from './edit-collection/edit-collection';
 
 export const routes: Routes = [
     { path: 'home', component: Homepage},
@@ -20,5 +21,6 @@ export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'profile', component: Profile, canActivate: [AuthGuard] },
     { path: 'collection-form', component: CollectionForm, canActivate: [AuthGuard]},
-    { path: 'collection/:id', component:Collection, canActivate: [AuthGuard]}
+    { path: 'collection/:id', component:Collection, canActivate: [AuthGuard]},
+    { path: 'edit-collection/:id',  component:EditCollection, canActivate: [AuthGuard]}
 ];

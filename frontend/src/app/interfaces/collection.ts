@@ -2,9 +2,15 @@ import { CardVersion } from "./card";
 import { UserI } from "./userI";
 
 export interface CollectionI {
-    cardVersion:CardVersion[],
-    user:UserI;
-    publicity:string;
-    id:number
-    name:string
+  id: number;
+  items: CollectionItemI[];
+  user: UserI;
+  publicity: boolean;
+  name: string;
+}
+
+export interface CollectionItemI {
+    id:number,
+    cardVersion:CardVersion,
+    collection:number
 }

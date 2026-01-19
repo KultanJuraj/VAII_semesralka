@@ -33,11 +33,15 @@ httpOptions = {
     return this.http.get<CollectionI[]>(`${this.collcectionUrl}/users/${userId}`);
   }
 
-  addVersionToCollection(userId: number, collectionId: number, versionId: number): Observable<CollectionI> {
+  addVersionToCollection(collectionId: number, versionId: number): Observable<CollectionI> {
     return this.http.post<CollectionI>(`${this.collcectionUrl}/${collectionId}/versions/${versionId}`, { versionId });
   }
 
   getCollection(id:number):Observable<CollectionI> {
     return this.http.get<CollectionI>(this.collcectionUrl + "/" + id);
+  }
+
+  removeVersion(collectionId:number,id:number):Observable<void> {
+    return this.http.delete<void>(`${this.collcectionUrl}/${collectionId}/versions/${id}`);
   }
 }

@@ -2,8 +2,11 @@ package com.backend.backend.Collection;
 
 import com.backend.backend.Card.CardVersion;
 import com.backend.backend.User.User;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 @Table(name = "collection_item")
 public class CollectionItem {

@@ -29,7 +29,9 @@ export class Colections {
 
   getCollections():void{
     this.userService.getLoggedUser().subscribe(user=>{this.user = user,
-    this.collectionService.getCollections(this.user.userId).subscribe(collections => {this.collections = collections, this.cdRef.detectChanges()});
+    this.collectionService.getCollections(this.user.userId).subscribe(collections => {this.collections = collections, this.cdRef.detectChanges(),
+      console.log(this.collections[0].name)
+    });
     });
     
     
