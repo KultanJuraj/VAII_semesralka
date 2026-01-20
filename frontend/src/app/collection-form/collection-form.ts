@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, Optional } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -75,5 +75,4 @@ getUser():void{
         }
       });
   }
-
 }
