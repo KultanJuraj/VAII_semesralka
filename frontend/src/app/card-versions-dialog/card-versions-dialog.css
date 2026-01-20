@@ -1,0 +1,126 @@
+.versions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 12px; 
+  box-sizing: border-box;
+}
+
+.version {
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.version:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.image-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #eee;
+}
+
+.image {
+  width: 100%;
+  height: 380px;           
+  object-fit: cover;        
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  display: inline-block;
+  padding: 6px 8px;
+  font-size: 0.80rem;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 16px;
+  text-transform: capitalize;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  backdrop-filter: blur(4px);
+}
+
+.rarity-badge {
+  left: 12px;
+  bottom: 12px;
+  background: rgba(0,0,0,0.72);
+}
+
+.expansion-badge {
+  right: 12px;
+  bottom: 12px;
+  background: rgba(255,255,255,0.92);
+  color: #111;
+  font-weight: 600;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  color: #222;
+  font-size: 0.92rem;
+  box-sizing: border-box;
+}
+
+.meta .expansion {
+  color: #555;
+  font-size: 0.88rem;
+}
+
+.meta .rarity {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.84rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #fff;
+  background: #666;
+}
+
+.meta .rarity[title="common"], .meta .rarity[data-rarity="common"], .rarity-badge[data-rarity="common"] {
+  background: #9e9e9e;
+}
+.meta .rarity[title="uncommon"], .meta .rarity[data-rarity="uncommon"], .rarity-badge[data-rarity="uncommon"] {
+  background: #2e7d32;
+}
+.meta .rarity[title="rare"], .meta .rarity[data-rarity="rare"], .rarity-badge[data-rarity="rare"] {
+  background: #1565c0;
+}
+.meta .rarity[title="mythic"], .meta .rarity[data-rarity="mythic"], .rarity-badge[data-rarity="mythic"] {
+  background: #b71c1c;
+}
+
+@media (max-width: 480px) {
+  .image {
+    height: 260px;
+  }
+  .version {
+    max-width: 220px;
+  }
+  .badge {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+  }
+  .meta {
+    font-size: 0.82rem;
+    padding: 8px 10px;
+  }
+}

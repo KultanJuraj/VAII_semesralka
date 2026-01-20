@@ -1,2 +1,27 @@
-<app-navigation></app-navigation>
+<span><h1 [routerLink]="['home']" class="name">MTG-Orginizer</h1></span>
+<mat-drawer-container autosize>
+<mat-drawer #drawer  mode="side">
+<mat-toolbar color="primary" class="toolbar">
+  <div class="left">
+  <button matButton [routerLink]="['cards']">Cards</button>
+  <button matButton [routerLink]="['public-collections']">Public collections</button>
+  @if(userservice.isLoggedin()){
+    <button matButton [routerLink]="['collections']">Collections</button>
+  }  
+  </div> 
+  
+  
+  <div class="right">
+    @if(userservice.isLoggedin()) {
+      <mat-icon fontIcon="person" [routerLink]="['/profile']"></mat-icon>
+      <button matButton (click)="logout()" class="login-button" [routerLink]="['/home']">Logout</button>
+    } @else {
+  <button matButton [routerLink]="['login']" class="login-button">Login</button>
+    }  
+</div>
+</mat-toolbar>
+</mat-drawer>
+<button (click)="drawer.toggle()" matButton="elevated">Menu</button>
 <router-outlet></router-outlet>
+</mat-drawer-container>
+

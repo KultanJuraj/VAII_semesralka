@@ -1,0 +1,24 @@
+.versions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 0 auto; 
+  max-width: 1200px;
+}
+.version {
+    max-width: 300px;
+    width: 100%;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.filter-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}

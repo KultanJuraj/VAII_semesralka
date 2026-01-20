@@ -2,5 +2,10 @@
 <h2>Your collections</h2>
 </div>
 <div class="collections">
-    <mat-card class="collection"></mat-card>
+    <button matButton [routerLink]="['/collection-form']">Create new collection</button>
+    @if(collections) {
+    @for (collection of collections; track collection.id) {
+    <mat-card class="collection" [routerLink]="['/collection/', collection.id]">{{collection.name}}  @if(collection.publicity){public} @else {not public} </mat-card>
+    }
+}
 </div>

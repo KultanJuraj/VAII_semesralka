@@ -55,8 +55,8 @@ export class UserService {
       return this.http.put(`http://localhost:8080/putUser/${user.userId}`, user);
     }
 
-    getLoggedUser(): Observable<any> {
-  return this.http.get("http://localhost:8080/userLogged");
+    getLoggedUser(): Observable<UserI> {
+  return this.http.get<UserI>("http://localhost:8080/userLogged");
   }
 
     deleteUser(user:UserI): Observable<any> {

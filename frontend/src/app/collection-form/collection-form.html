@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="collection-form">
+  <mat-form-field appearance="outline" class="name-field">
+    <mat-label>Collection name</mat-label>
+    <input matInput formControlName="name" placeholder="My Favorite Cards" />
+  </mat-form-field>
+
+  <mat-checkbox formControlName="publicity">Public collection</mat-checkbox>
+
+  <div class="actions">
+    <button mat-flat-button color="primary" type="submit" [disabled]="submitting">
+      {{ submitting ? 'Creating…' : 'Create collection' }}
+    </button>
+  </div>
+</form>

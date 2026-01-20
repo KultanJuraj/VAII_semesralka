@@ -3,6 +3,8 @@ package com.backend.backend.Card;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
+
 
 @RestController
 @RequestMapping("/cards")
@@ -28,5 +30,15 @@ public class CardController {
                 : cardService.getCard(id))
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/version/{versionId}/full")
+    public ResponseEntity<Map<String, Object>> getCardWithVersion(@PathVariable Integer versionId) {
+        try {
+            Map<String, Object> payload = cardService.getCardAndVersionByVersionId(versionId);
+            return ResponseEntity.ok(payload);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

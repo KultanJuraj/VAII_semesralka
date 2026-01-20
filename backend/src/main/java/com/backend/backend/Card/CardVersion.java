@@ -22,14 +22,14 @@ public class CardVersion {
 
 
     @Column(name = "image")
-    String image;
+    private String image;
 
     @Column(name = "rarity")
-    String rarity;
+    private String rarity;
 
 
     @Column(name = "expansion")
-    String expansion;
+    private String expansion;
 
 
     public Integer getId() {
