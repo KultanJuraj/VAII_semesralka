@@ -46,6 +46,9 @@ export class Collection {
   }
 
   remove(id:number):void{
-    this.collectionService.removeVersion(this.colleId, id).subscribe(collection => {this.cdRef.detectChanges()});
+    this.collectionService.removeVersion(this.colleId, id).subscribe(collection => {
+      this.collection!.items = this.collection!.items.filter(v=>v.cardVersion.id!=id);
+      this.cdRef.detectChanges();
+    });
   }
 }

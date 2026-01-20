@@ -11,7 +11,8 @@ import { CollectionI } from '../interfaces/collection';
 import { UserService } from '../user';
 import { ChangeDetectorRef } from '@angular/core';
 import { UserI } from '../interfaces/userI';
-import { RouterLink } from "@angular/router";
+import { Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-collectio-form',
@@ -21,7 +22,6 @@ import { RouterLink } from "@angular/router";
 })
 export class CollectionForm {
   userId!: number;
-  @Output() created = new EventEmitter<CollectionI>();
   form!: FormGroup;
 
   
@@ -33,6 +33,7 @@ export class CollectionForm {
     private collectionService: CollectionsService,
     private snack: MatSnackBar,
     private userService:UserService,
+    private router:Router
   ) {}
 
   ngOnInit() {
@@ -65,7 +66,7 @@ getUser():void{
           this.submitting = false;
           this.snack.open('Collection created', 'OK', { duration: 1500 });
           this.form.reset({ name: '', publicity: false });
-          this.created.emit(col);
+          this.router.navigate(['/collections']);
         },
         error: err => {
           console.error('create collection failed', err);

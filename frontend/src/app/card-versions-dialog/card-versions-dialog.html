@@ -3,7 +3,6 @@
 @if (versions) {
   <div class="versions">
   @for(v of versions; track v.id){
-  <mat-dialog-content>
     <mat-card class="version" (click)="choose(v)">
       <div class="image-wrap">
         <img class="image" mat-card-image [src]="v.image" [alt]="v.id">
@@ -19,9 +18,8 @@
         </div>
       </div>
     </mat-card>
-  </mat-dialog-content>
-}
-</div>
+    }
+  </div>
 }
 
 <mat-dialog-actions align="end">

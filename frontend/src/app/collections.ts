@@ -42,8 +42,10 @@ httpOptions = {
   }
 
   updateCollection(collectionId:number, collection:CollectionI):Observable<CollectionI>{
-    return this.http.put<CollectionI>(`${this.collcectionUrl}/${collectionId}`, collection);
+    const body = { name: collection.name, publicity: collection.publicity };
+    return this.http.put<CollectionI>(`${this.collcectionUrl}/${collectionId}`, body);
   }
+
   deleteCollection(collectionId: number): Observable<void> {
   return this.http.delete<void>(`${this.collcectionUrl}/${collectionId}`);
 }

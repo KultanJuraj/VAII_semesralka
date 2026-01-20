@@ -5,10 +5,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from "@angular/router";
 import { MatButton } from '@angular/material/button';
 import { UserService } from '../user';
+import { MatSidenavModule } from '@angular/material/sidenav'
 
 @Component({
   selector: 'app-navigation',
-  imports: [MatIconModule, MatButtonModule, MatToolbarModule, RouterLink, MatButton],
+  imports: [],
   templateUrl: './navigation.html',
   styleUrl: './navigation.css',
 })

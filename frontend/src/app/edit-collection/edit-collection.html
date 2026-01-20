@@ -1,1 +1,16 @@
-<button mat-button (click) = "delete()" [routerLink]="['/collections']">Delete Collection</button>
+<mat-card>
+    <mat-card-content>
+        <div class="profile-row">
+            <mat-form-field appearance="outline" class="profile-field">
+            <mat-label>Collection Name</mat-label>
+            <input matInput [(ngModel)]="collectionE.name" [readonly]="!edit.name" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="toggleEdit('name')">
+        {{ edit.name ? 'Save' : 'Edit' }}
+      </button>
+    </div>
+    <mat-checkbox [(ngModel)] = "collectionE.publicity">Publicity</mat-checkbox>
+    <button mat-button (click) = "delete()" [routerLink]="['/collections']">Delete Collection</button>
+    <button mat-raised-button color="accent" (click)="saveAll()" [routerLink]="['/home']">Save Changes</button>
+    </mat-card-content>
+</mat-card>
