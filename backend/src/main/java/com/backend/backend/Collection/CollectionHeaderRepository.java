@@ -13,4 +13,10 @@ public interface CollectionHeaderRepository extends JpaRepository<CollectionHead
 
     @EntityGraph(attributePaths = {"items", "items.cardVersion", "user"})
     Optional<CollectionHeader> findWithItemsById(Integer headerId);
+
+    List<CollectionHeader> getAllByPublicity(Boolean publicity);
+
+    CollectionHeader getByPublicityIsTrueAndId(Boolean publicity, Integer id);
+
+    CollectionHeader getByIdAndPublicityIsTrue(Integer id, Boolean publicity);
 }

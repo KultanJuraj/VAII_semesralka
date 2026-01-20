@@ -10,6 +10,9 @@ import { AuthGuard } from './auth.guard/auth.guard'
 import { CollectionForm } from './collection-form/collection-form';
 import { Collection } from './collection/collection';
 import { EditCollection } from './edit-collection/edit-collection';
+import { CardBrowser } from './card-browser/card-browser';
+import { PublicCollections } from './public-collections/public-collections';
+import { PublicCollectionView } from './public-collection-view/public-collection-view';
 
 export const routes: Routes = [
     { path: 'home', component: Homepage},
@@ -22,5 +25,8 @@ export const routes: Routes = [
     { path: 'profile', component: Profile, canActivate: [AuthGuard] },
     { path: 'collection-form', component: CollectionForm, canActivate: [AuthGuard]},
     { path: 'collection/:id', component:Collection, canActivate: [AuthGuard]},
-    { path: 'edit-collection/:id',  component:EditCollection, canActivate: [AuthGuard]}
+    { path: 'edit-collection/:id',  component:EditCollection, canActivate: [AuthGuard]},
+    { path: 'card-browser/:id', component:CardBrowser, canActivate: [AuthGuard]},
+    { path: 'public-collections', component: PublicCollections},
+    { path: 'public-collection-view/:id', component: PublicCollectionView }
 ];

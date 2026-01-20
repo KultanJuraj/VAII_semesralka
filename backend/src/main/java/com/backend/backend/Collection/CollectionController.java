@@ -2,6 +2,7 @@ package com.backend.backend.Collection;
 
 import com.backend.backend.Card.CardVersion;
 import com.backend.backend.Security.UserDetailsImpl;
+import org.hibernate.validator.constraints.ParameterScriptAssert;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,21 +20,6 @@ public class CollectionController {
 
     public CollectionController(CollectionService collectionService) {
         this.collectionService = collectionService;
-    }
-
-    @GetMapping("/{collectionId}/versions")
-    public ResponseEntity<List<CardVersion>> getCollectionVersions(@PathVariable Integer collectionId) {
-        try {
-            List<CardVersion> versions = collectionService.getCollectionById(collectionId)
-                    .getItems()
-                    .stream()
-                    .map(CollectionItem::getCardVersion)
-                    .toList();
-            if (versions.isEmpty()) return ResponseEntity.notFound().build();
-            return ResponseEntity.ok(versions);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
     }
 
     @GetMapping("/{collectionId}")
@@ -121,4 +107,13 @@ public class CollectionController {
         }
     }
 
+    @GetMapping("/public")
+    public List<CollectionHeader> getAllPublic() {
+        return this.collectionService.getAllPublicCollections();
+    }
+
+    @GetMapping("/public/{collectionId}")
+    public CollectionHeader getPublicCollection(@PathVariable Integer collectionId) {
+            return this.collectionService.getPublicCollection(collectionId);
+        }
 }

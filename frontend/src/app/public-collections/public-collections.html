@@ -1,1 +1,10 @@
-<p>public-collections works!</p>
+<div class="title">
+<h2>Public Collections</h2>
+</div>
+<div class="collections">
+    @if(collections) {
+    @for (collection of collections; track collection.id) {
+    <mat-card class="collection" [routerLink]="['/public-collection-view/', collection.id]">{{collection.name}} {{collection.user.username}}</mat-card>
+    }
+}
+</div>

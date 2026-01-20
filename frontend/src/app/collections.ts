@@ -47,4 +47,12 @@ httpOptions = {
   deleteCollection(collectionId: number): Observable<void> {
   return this.http.delete<void>(`${this.collcectionUrl}/${collectionId}`);
 }
+
+  getPublicCollections():Observable<CollectionI[]> {
+    return this.http.get<CollectionI[]>(`${this.collcectionUrl}/public`);
+  }
+
+  getPublicCollection(id:number):Observable<CollectionI> {
+    return this.http.get<CollectionI>(`${this.collcectionUrl}/public/${id}`)
+  }
 }

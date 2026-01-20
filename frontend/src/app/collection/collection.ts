@@ -27,7 +27,7 @@ export class Collection {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params =>{
-      this.colleId= Number(params.get('id'));
+      this.colleId = Number(params.get('id'));
       this.get(this.colleId);
     })
 

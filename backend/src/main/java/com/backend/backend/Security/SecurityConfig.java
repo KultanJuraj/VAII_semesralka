@@ -31,6 +31,7 @@ public class SecurityConfig {
                         .requestMatchers("/putUser/**").permitAll()
                         .requestMatchers("/cards/**").permitAll()
                         .requestMatchers("/cards/version/**").permitAll()
+                        .requestMatchers("/collections/public/**").permitAll()
                         .requestMatchers("/user").authenticated()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated()

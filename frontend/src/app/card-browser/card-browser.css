@@ -1,4 +1,4 @@
-.versions {
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   flex-wrap: wrap;
@@ -7,7 +7,7 @@
   margin: 0 auto; 
   max-width: 1200px;
 }
-.version {
+.card{
     max-width: 300px;
     width: 100%;
 }

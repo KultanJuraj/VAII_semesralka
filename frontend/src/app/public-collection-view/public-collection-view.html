@@ -1,0 +1,11 @@
+<div class = "versions" >
+
+@if(collection)
+{
+    @for (item of collection?.items; track item.id) {
+        <mat-card class = "version">
+            <img [src]="item.cardVersion.image" class = "image" [alt]="item.cardVersion.id">
+        </mat-card>
+    }
+}
+</div>

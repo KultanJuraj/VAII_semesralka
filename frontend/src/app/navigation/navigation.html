@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="toolbar">
   <div class="left">
   <button matButton [routerLink]="['cards']">Cards</button>
+  <button matButton [routerLink]="['public-collections']">Public collections</button>
   @if(userservice.isLoggedin()){
     <button matButton [routerLink]="['collections']">Collections</button>
   }  

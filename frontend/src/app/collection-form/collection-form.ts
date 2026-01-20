@@ -15,7 +15,7 @@ import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-collectio-form',
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatButtonModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatButtonModule],
   templateUrl: './collection-form.html',
   styleUrl: './collection-form.css',
 })

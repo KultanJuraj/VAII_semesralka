@@ -123,4 +123,13 @@ public class CollectionService {
         return collectionHRepo.save(header);
     }
 
+    @Transactional
+    public List<CollectionHeader> getAllPublicCollections() {
+        return this.collectionHRepo.getAllByPublicity(true);
+    }
+    @Transactional
+    public CollectionHeader getPublicCollection(Integer id) {
+        return this.collectionHRepo.getByIdAndPublicityIsTrue(id,true);
+    }
+
 }
