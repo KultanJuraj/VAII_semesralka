@@ -5,7 +5,7 @@
 <div class="collections">
     @if(collections) {
     @for (collection of collections; track collection.id) {
-    <mat-card class="collection" [routerLink]="['/collection/', collection.id]">{{collection.name}}  @if(collection.publicity){public} @else {not public} </mat-card>
+    <mat-card class="collection" [routerLink]="['/collection/', collection.id]">Name: {{collection.name}} <br> Publicity: @if(collection.publicity){public} @else {not public} </mat-card>
     }
 }
 </div>

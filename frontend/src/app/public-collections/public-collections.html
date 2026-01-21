@@ -4,7 +4,7 @@
 <div class="collections">
     @if(collections) {
     @for (collection of collections; track collection.id) {
-    <mat-card class="collection" [routerLink]="['/public-collection-view/', collection.id]">{{collection.name}} {{collection.user.username}}</mat-card>
+    <mat-card class="collection" [routerLink]="['/public-collection-view/', collection.id]">Name: {{collection.name}}<br>User: {{collection.user.username}}</mat-card>
     }
 }
 </div>

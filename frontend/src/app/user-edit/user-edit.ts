@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
-  imports: [MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, RouterLink],
+  imports: [MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule],
   templateUrl: './user-edit.html',
   styleUrl: './user-edit.css',
 })
