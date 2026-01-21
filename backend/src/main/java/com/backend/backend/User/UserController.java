@@ -42,4 +42,14 @@ public class UserController {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/users/{userId}")
+    public List<User> getUsers(@PathVariable Integer userId) {
+        return this.userService.getUsers(userId);
+    }
+
+    @GetMapping("/{editingUser}/{editeUser}")
+    public User getUser(@PathVariable Integer editingUser, @PathVariable Integer editeUser) {
+        return this.userService.getUser(editingUser,editeUser);
+    }
 }

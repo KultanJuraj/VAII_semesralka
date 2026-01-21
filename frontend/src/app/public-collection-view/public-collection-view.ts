@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
 import { CollectionI } from '../interfaces/collection';
 import { CollectionsService } from '../collections';
 import { MatCard } from '@angular/material/card';
 import { ChangeDetectorRef } from '@angular/core';
+import { Location } from '@angular/common';
+import { MatAnchor } from "@angular/material/button";
+import { CardsService } from '../cards';
+import { CardA } from '../interfaces/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-public-collection-view',
-  imports: [MatCard],
+  imports: [MatCard, MatAnchor],
   templateUrl: './public-collection-view.html',
   styleUrl: './public-collection-view.css',
 })
@@ -16,7 +21,8 @@ export class PublicCollectionView {
   id:number = 0;
 
   constructor(private route:ActivatedRoute, private collectionsService:CollectionsService,
-    private cdRef:ChangeDetectorRef
+    private cdRef:ChangeDetectorRef, private location:Location, private cardService:CardsService,
+    private router:Router
   ) {}
 
   ngOnInit(){
@@ -31,4 +37,16 @@ export class PublicCollectionView {
       console.log(this.collection.id)
     });
   }
+  back():void{
+    this.location.back();
+  }
+
+  card(cardVersionId:number): void {
+      var cardV:CardA;
+      this.cardService.getCardByVersion(cardVersionId).subscribe(card=>{
+      cardV = card
+      console.log(cardV.card.id)
+      this.router.navigateByUrl('card/' + cardV.card.id)
+    })
+    }
 }

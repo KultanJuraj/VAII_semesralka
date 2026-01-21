@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CardI } from './interfaces/card'
+import { CardA, CardI } from './interfaces/card'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -20,7 +20,11 @@ export class CardsService {
     return this.http.get<CardI[]>(this.cardUrl);
   }
   getCard(id:number):Observable<CardI>{
-    return this.http.get<CardI>(this.cardUrl + '/' + id);
+    return this.http.get<CardI>(`${this.cardUrl}/${id}`);
+  }
+
+  getCardByVersion(versionId:number):Observable<CardA> {
+    return this.http.get<CardA>(`${this.cardUrl}/version/${versionId}/full`);
   }
 
 }

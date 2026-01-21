@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CollectionsService } from '../collections';
 import { CollectionI } from '../interfaces/collection';
-import { CardVersion } from '../interfaces/card';
+import { CardI, CardVersion, CardA } from '../interfaces/card';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatCard } from "@angular/material/card";
 import { MatButton } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { CardsService } from '../cards';
 
 @Component({
   selector: 'app-collection',
@@ -21,7 +23,8 @@ export class Collection {
   colleId!:number;
 
   constructor(private route: ActivatedRoute, private collectionService:CollectionsService,
-    private cdRef: ChangeDetectorRef,
+    private cdRef: ChangeDetectorRef, private location:Location, private cardSerrvice:CardsService,
+    private router:Router
   ) {}
 
 
@@ -46,9 +49,21 @@ export class Collection {
   }
 
   remove(id:number):void{
-    this.collectionService.removeVersion(this.colleId, id).subscribe(collection => {
+    this.collectionService.removeVersion(this.colleId, id).subscribe(() => {
       this.collection!.items = this.collection!.items.filter(v=>v.cardVersion.id!=id);
       this.cdRef.detectChanges();
     });
+  }
+  back():void {
+    this.location.back();
+  }
+
+  card(cardVersionId:number): void {
+    var cardV:CardA;
+    this.cardSerrvice.getCardByVersion(cardVersionId).subscribe(card=>{
+    cardV = card
+    console.log(cardV.card.id)
+    this.router.navigateByUrl('card/' + cardV.card.id)
+  })
   }
 }

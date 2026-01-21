@@ -1,0 +1,94 @@
+<form #editForm="ngForm" (ngSubmit)="saveAll(editForm)" novalidate>
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <mat-card-title>Edit User</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="profile-row">
+        <mat-form-field appearance="outline" class="profile-field">
+          <mat-label>Username</mat-label>
+
+          <input
+            matInput
+            name="username"
+            [(ngModel)]="profile.username"
+            (ngModelChange)="onUsernameInput($event)"
+            (blur)="onUsernameBlur()"
+            [ngModelOptions]="{ standalone: true }"
+            [readonly]="!edit.username"
+            minlength="3"
+            maxlength="20"
+            pattern="^[A-Za-z0-9_]+$"
+            #usernameModel="ngModel"
+            required
+          />
+
+          @if((usernameModel.touched || usernameModel.dirty) && usernameModel.errors?.['required']) {
+            <mat-error>Username is required</mat-error>
+          }
+          @else if((usernameModel.touched || usernameModel.dirty) && usernameModel.errors?.['minlength']) {
+            <mat-error>Username must be at least 3 characters</mat-error>
+          }
+          @else if((usernameModel.touched || usernameModel.dirty) && usernameModel.errors?.['maxlength']) {
+            <mat-error>Username must be at most 20 characters</mat-error>
+          }
+          @else if((usernameModel.touched || usernameModel.dirty) && usernameModel.errors?.['pattern']) {
+            <mat-error>Only letters, numbers and underscore are allowed</mat-error>
+          }
+          @else if((usernameTouched || attemptedSave) && usernameError) {
+            <mat-error>{{ usernameError }}</mat-error>
+          }
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="button" (click)="toggleEdit('username')">
+          {{ edit.username ? 'Save' : 'Edit' }}
+        </button>
+      </div>
+
+      <div class="profile-row">
+        <mat-form-field appearance="outline" class="profile-field">
+          <mat-label>Email</mat-label>
+
+          <input
+            matInput
+            [(ngModel)]="profile.email"
+            (ngModelChange)="onEmailInput($event)"
+            (blur)="onEmailBlur()"
+            [ngModelOptions]="{ standalone: true }"
+            [readonly]="!edit.email"
+            #emailModel="ngModel"
+            type="email"
+            required
+          />
+
+          @if((emailModel.touched || emailModel.dirty) && emailModel.errors?.['required']) {
+            <mat-error>Email is required</mat-error>
+          }
+          @else if((emailModel.touched || emailModel.dirty) && emailModel.errors?.['type']) {
+            <mat-error>Invalid email format</mat-error>
+          }
+          @else if((emailTouched || attemptedSave) && emailError) {
+            <mat-error>{{ emailError }}</mat-error>
+          }
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="button" (click)="toggleEdit('email')">
+          {{ edit.email ? 'Save' : 'Edit' }}
+        </button>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="actions" >
+      <button mat-button type="button" (click)="back()">Back</button>
+
+      <button mat-raised-button color="accent" type="submit" [disabled]="submitting">
+        {{ submitting ? 'Saving…' : 'Save Changes' }}
+      </button>
+
+      <button mat-raised-button color="warn" type="button" (click)="deleteProfile()" [disabled]="submitting">
+        Delete User
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

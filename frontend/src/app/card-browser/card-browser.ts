@@ -18,6 +18,7 @@ import { MatInput } from '@angular/material/input';
 import { MatCard } from '@angular/material/card';
 import { MatLabel } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-card-browser',
@@ -49,7 +50,8 @@ export class CardBrowser {
     private collectionsService: CollectionsService,
     private dialog: MatDialog,
     private cdRef: ChangeDetectorRef,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location:Location
   ) {}
 
   ngOnInit(): void {
@@ -106,5 +108,9 @@ export class CardBrowser {
         console.error('Failed to add version to collection', err);
       }
     });
+  }
+
+  back():void{
+    this.location.back();
   }
 }

@@ -1,0 +1,19 @@
+<div class="title">
+<h2>Your collections</h2>
+</div>
+<button matButton [routerLink]="['/register',]">Create new user and login</button>
+<button mat-button (click) = "changeRFlag()">Remove User</button>
+<div class="users">
+    @if(users) {
+    @for (user of users; track user.userId) {
+        @if(!user.admin) {
+    <mat-card class="user" [routerLink]="['/user-edit/', user.userId]">{{user.username}} 
+    </mat-card>
+    @if(removeFlag) {
+    <button mat-button (click)="deleteUser(user)">Delete user</button>
+        }
+    
+        }
+    }
+}
+</div>

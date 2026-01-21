@@ -1,9 +1,36 @@
+<button mat-button (click)="back()">Back</button>
 <mat-card>
     <mat-card-content>
         <div class="profile-row">
             <mat-form-field appearance="outline" class="profile-field">
             <mat-label>Collection Name</mat-label>
-            <input matInput [(ngModel)]="collectionE.name" [readonly]="!edit.name" />
+            <input matInput [(ngModel)]="collectionE.name" [readonly]="!edit.name" 
+            matInput
+            name="name"
+            minlength="3"
+            maxlength="50"
+            (ngModelChange)="onNameInput($event)"
+            [(ngModel)]="collectionE.name"
+            [readonly]="!edit.name"
+            pattern="^[A-Za-z0-9 _\-]+$"
+            #nameModel="ngModel"/>
+            @if(nameModel.errors?.['required']) {
+            <mat-error>
+                Name is required
+            </mat-error>
+        } @else if(nameModel.errors?.['minlength']) {
+            <mat-error>
+                Name must be at least 3 letters long
+            </mat-error>
+        } @else if(nameModel.errors?.['maxlength']) {
+            <mat-error>
+                Name must be 50 letters at most
+            </mat-error>
+        } @else if(nameModel.errors?.['pattern']) {
+            <mat-error>
+                Only letters, numbers, spaces, underscores and hyphens are allowed.
+            </mat-error>
+        }
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="toggleEdit('name')">
         {{ edit.name ? 'Save' : 'Edit' }}
@@ -11,6 +38,6 @@
     </div>
     <mat-checkbox [(ngModel)] = "collectionE.publicity">Publicity</mat-checkbox>
     <button mat-button (click) = "delete()" [routerLink]="['/collections']">Delete Collection</button>
-    <button mat-raised-button color="accent" (click)="saveAll()" [routerLink]="['/home']">Save Changes</button>
+    <button mat-raised-button color="accent" (click)="saveAll()">Save Changes</button>
     </mat-card-content>
 </mat-card>

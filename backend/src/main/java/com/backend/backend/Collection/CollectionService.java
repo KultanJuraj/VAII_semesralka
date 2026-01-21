@@ -109,7 +109,6 @@ public class CollectionService {
 
     @Transactional
     public CollectionHeader createCollectionForUser(Integer userId, String name, Boolean publicity, Integer currentUserId) {
-        // ensure authenticated user matches requested userId
         if (!userId.equals(currentUserId)) {
             throw new AccessDeniedException("User is not allowed to create a collection for another user");
         }
@@ -120,7 +119,7 @@ public class CollectionService {
         header.setUser(user);
         header.setName(name);
         header.setPublicity(publicity != null ? publicity : Boolean.FALSE);
-        return collectionHRepo.save(header);
+        return this.collectionHRepo.save(header);
     }
 
     @Transactional
@@ -130,6 +129,11 @@ public class CollectionService {
     @Transactional
     public CollectionHeader getPublicCollection(Integer id) {
         return this.collectionHRepo.getByIdAndPublicityIsTrue(id,true);
+    }
+
+    @Transactional
+    public CollectionItem getColletionItemById(Integer id) {
+        return this.collectionIRepo.getById(id);
     }
 
 }

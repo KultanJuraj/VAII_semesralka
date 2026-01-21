@@ -1,3 +1,4 @@
+<button mat-button (click)="back()">Back</button>
 <button mat-button [routerLink]="['/card-browser', collection?.id]">Add card</button><button mat-button (click) = "changeRFlag()">Remove Card</button>
 <button mat-button [routerLink]="['/edit-collection', collection?.id]" >Edit Collection</button>
 <div class = "versions" >
@@ -6,12 +7,13 @@
 {
     @for (item of collection?.items; track item.id) {
         <mat-card class = "version">
-            <img [src]="item.cardVersion.image" class = "image" [alt]="item.cardVersion.id">
-        </mat-card>
-@if(removeFlag) 
-    {
+            <img [src]="item.cardVersion.image" class = "image" [alt]="item.cardVersion.id" (click)="card(item.cardVersion.id)"> <br>
+            @if(removeFlag) {
         <button mat-button (click)="remove(item.cardVersion.id)">Remove card</button>
     }
+            
+        </mat-card>
+
 }
 }
 </div>

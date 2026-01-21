@@ -1,14 +1,60 @@
-<form [formGroup]="form" (ngSubmit)="submit()" class="collection-form">
-  <mat-form-field appearance="outline" class="name-field">
-    <mat-label>Collection name</mat-label>
-    <input matInput formControlName="name" placeholder="My Favorite Cards" />
-  </mat-form-field>
+<form #createForm="ngForm" (ngSubmit)="saveAll(createForm)" novalidate>
+  <button mat-button type="button" (click)="back()">Back</button>
 
-  <mat-checkbox formControlName="publicity">Public collection</mat-checkbox>
+  <mat-card>
+    <mat-card-content>
+      <div class="profile-row">
+        <mat-form-field appearance="outline" class="profile-field">
+          <mat-label>Collection Name</mat-label>
+          <input
+            matInput
+            name="name"
+            [(ngModel)]="collectionE.name"
+            (ngModelChange)="onNameInput($event)"
+            [ngModelOptions]="{ standalone: true }"
+            (blur)="onNameBlur()"
+            [readonly]="!edit.name"
+            minlength="3"
+            maxlength="50"
+            pattern="^[A-Za-z0-9 _\-]+$"
+            #nameModel="ngModel"
+          />
 
-  <div class="actions">
-    <button mat-flat-button color="primary" type="submit" [disabled]="submitting">
-      {{ submitting ? 'Creating…' : 'Create collection' }}
-    </button>
-  </div>
+          @if((nameModel.touched || nameModel.dirty) && nameModel.errors?.['required']) {
+            <mat-error>Name is required</mat-error>
+          }
+          @else if((nameModel.touched || nameModel.dirty) && nameModel.errors?.['minlength']) {
+            <mat-error>Name must be at least 3 letters long</mat-error>
+          }
+          @else if((nameModel.touched || nameModel.dirty) && nameModel.errors?.['maxlength']) {
+            <mat-error>Name must be 50 letters at most</mat-error>
+          }
+          @else if((nameModel.touched || nameModel.dirty) && nameModel.errors?.['pattern']) {
+            <mat-error>Only letters, numbers, spaces, underscores and hyphens are allowed.</mat-error>
+          }
+          @else if((nameTouched || attemptedSave) && nameError) {
+            <mat-error>{{ nameError }}</mat-error>
+          }
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="button" (click)="toggleEdit('name')">
+          {{ edit.name ? 'Save' : 'Edit' }}
+        </button>
+      </div>
+
+      <mat-checkbox
+        name="publicity"
+        [(ngModel)]="collectionE.publicity"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        Publicity
+      </mat-checkbox>
+
+      <div class="actions" style="margin-top:1rem;">
+        <button mat-raised-button color="accent" type="submit" [disabled]="submitting">
+          {{ submitting ? 'Creating…' : 'Create collection' }}
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </form>
