@@ -13,6 +13,7 @@ import { EditCollection } from './edit-collection/edit-collection';
 import { CardBrowser } from './card-browser/card-browser';
 import { PublicCollections } from './public-collections/public-collections';
 import { PublicCollectionView } from './public-collection-view/public-collection-view';
+import { Users } from './users/users';
 
 export const routes: Routes = [
     { path: 'home', component: Homepage},
@@ -28,5 +29,6 @@ export const routes: Routes = [
     { path: 'edit-collection/:id',  component:EditCollection, canActivate: [AuthGuard]},
     { path: 'card-browser/:id', component:CardBrowser, canActivate: [AuthGuard]},
     { path: 'public-collections', component: PublicCollections},
-    { path: 'public-collection-view/:id', component: PublicCollectionView }
+    { path: 'public-collection-view/:id', component: PublicCollectionView },
+    { path: 'users', component: Users }
 ];

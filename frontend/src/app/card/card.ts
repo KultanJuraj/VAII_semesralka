@@ -7,6 +7,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { VersionDialog } from '../version-dialog/version-dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAnchor } from "@angular/material/button";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-card',
@@ -23,6 +24,7 @@ export class Card {
     private cardsService: CardsService,
     private cdRef: ChangeDetectorRef,
     private dialog: MatDialog, 
+    private location:Location
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +56,9 @@ export class Card {
         console.log('Version dialog closed with', result);
       }
     });
+  }
+  back():void{
+    this.location.back();
   }
 
 }

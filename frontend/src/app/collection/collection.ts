@@ -7,6 +7,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { MatCard } from "@angular/material/card";
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-collection',
@@ -21,7 +22,7 @@ export class Collection {
   colleId!:number;
 
   constructor(private route: ActivatedRoute, private collectionService:CollectionsService,
-    private cdRef: ChangeDetectorRef,
+    private cdRef: ChangeDetectorRef, private location:Location
   ) {}
 
 
@@ -50,5 +51,8 @@ export class Collection {
       this.collection!.items = this.collection!.items.filter(v=>v.cardVersion.id!=id);
       this.cdRef.detectChanges();
     });
+  }
+  back():void {
+    this.location.back();
   }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,5 +56,16 @@ public class UserServiceIpml implements UserService{
         userRepository.deleteById(userId);
     }
 
+    @Override
+    public List<User> getUsers(int userId) {
+        User currentUser = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + userId));
+
+        if (!currentUser.isAdmin()) {
+            return List.of();
+        }
+
+        return userRepository.findAll();
+    }
 
 }

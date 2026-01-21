@@ -1,24 +1,22 @@
 <span><h1 [routerLink]="['home']" class="name">MTG-Orginizer</h1></span>
-<mat-drawer-container autosize>
-<mat-drawer #drawer  mode="side">
-  <div class="left">
-  <button matButton [routerLink]="['cards']">Cards</button>
-  <button matButton [routerLink]="['public-collections']">Public collections</button>
+<mat-drawer-container autosize class="sidenav-container">
+<mat-drawer #drawer  mode="over" class="sidenav">
+  <button matButton [routerLink]="['cards']">Cards</button><br>
+  <button matButton [routerLink]="['public-collections']">Public collections</button><br>
   @if(userservice.isLoggedin()){
-    <button matButton [routerLink]="['collections']">Collections</button>
+    <button matButton [routerLink]="['collections']">Collections</button><br>
   }  
-  </div> 
   
-  
-  <div class="right">
     @if(userservice.isLoggedin()) {
-      <mat-icon fontIcon="person" [routerLink]="['/profile']"></mat-icon>
-      <button matButton (click)="logout()" class="login-button" [routerLink]="['/home']">Logout</button>
+      <mat-icon fontIcon="person" [routerLink]="['/profile']"></mat-icon><br>
+      <button matButton (click)="logout()" class="login-button" [routerLink]="['/home']">Logout</button><br>
     } @else {
-  <button matButton [routerLink]="['login']" class="login-button">Login</button>
+  <button matButton [routerLink]="['login']" class="login-button">Login</button><br>
     }  
-</div>
+@if(loggedUser?.isAdmin) {
+<button matButton [routerLink]="['/users']">Users</button>
+}
 </mat-drawer>
-<button (click)="drawer.toggle()" matButton="elevated">Menu</button>
+<button (click)="drawer.toggle()" matButton="elevated"><mat-icon fontIcon="menu">menu</mat-icon></button>
 <router-outlet></router-outlet>
 </mat-drawer-container>

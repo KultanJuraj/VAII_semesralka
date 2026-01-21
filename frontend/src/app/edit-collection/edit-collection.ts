@@ -9,6 +9,7 @@ import { MatFormField } from '@angular/material/input';
 import { MatInput } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatCheckbox } from "@angular/material/checkbox";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-collection',
@@ -19,7 +20,9 @@ import { MatCheckbox } from "@angular/material/checkbox";
 export class EditCollection {
   collection:CollectionI|undefined;
   id:number = 0;
-  constructor(private collectionService:CollectionsService, private route: ActivatedRoute){}
+  constructor(private collectionService:CollectionsService, private route: ActivatedRoute,
+    private location:Location
+  ){}
   
   collectionE = {
     name:'',
@@ -63,5 +66,9 @@ export class EditCollection {
     this.collectionService.updateCollection(this.id, this.collection).subscribe(collections=>{console.log("collection updated")})
     }
 
+  }
+
+  back():void{
+    this.location.back();
   }
 }

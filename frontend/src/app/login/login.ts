@@ -7,6 +7,8 @@ import { UserService } from '../user';
 import { Router, RouterLink } from '@angular/router';
 import { MatCardActions, MatCardContent, MatCard, MatCardTitle } from '@angular/material/card';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { App } from '../app';
+import { UserI } from '../interfaces/userI';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './login.css',
 })
 export class Login {
+
+  loggedUser:UserI|undefined;
   loginGroup = new FormGroup ({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -25,7 +29,7 @@ export class Login {
   constructor(
     private userService: UserService,
     private readonly router : Router,
-    private snack: MatSnackBar
+    private snack: MatSnackBar,
   ) { }
 
   login(): void {
@@ -34,7 +38,7 @@ export class Login {
       const password = this.loginGroup.value.password ?? '';
       this.userService.login(username, password).subscribe({
         next: use => {this.router.navigateByUrl('/home')},
-        error: err=> {this.snack.open("Failed to log in, wrong username or password", 'Ok', {duration: 2000 })}
+        error: err=> {this.snack.open("Failed to log in, wrong username or password", 'Ok', {duration: 2000 })},
       } 
     );
     }

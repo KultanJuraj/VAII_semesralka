@@ -3,5 +3,6 @@ export interface UserI {
     rating:number,
     username:string,
     email:string,
-    password:string
+    password:string,
+    isAdmin:boolean
 }

@@ -35,6 +35,9 @@ public class User {
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
+    @Column(name = "admin")
+    Boolean isAdmin;
+
     public String getUsername() {
         return username;
     }
@@ -66,4 +69,8 @@ public class User {
 
     public Double getRating() { return rating; }
     public void setRating(Double rating) { this.rating = rating; }
+
+    public Boolean isAdmin() {
+        return isAdmin;
+    }
 }
