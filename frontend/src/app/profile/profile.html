@@ -7,19 +7,64 @@
     <div class="profile-row">
       <mat-form-field appearance="outline" class="profile-field">
         <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="profile.username" [readonly]="!edit.username" />
+        <input
+          matInput
+          [(ngModel)]="profile.username"
+          (ngModelChange)="onUsernameInput($event)"
+          (blur)="onUsernameBlur()"
+          [readonly]="!edit.username"
+          minlength="3"
+          maxlength="50"
+          pattern="^[A-Za-z0-9 _\-]+$"
+          #nameModel="ngModel"
+          required
+        />
+        @if((usernameTouched || attemptedSave) && usernameError) {
+          <mat-error>{{ usernameError }}</mat-error>
+        } @else if(nameModel.errors?.['required']) {
+            <mat-error>
+                Name is required
+            </mat-error>
+        } @else if(usernameTouched && nameModel.errors?.['minlength']) {
+            <mat-error>
+                Name must be at least 3 letters long
+            </mat-error>
+        } @else if(usernameTouched && nameModel.errors?.['maxlength']) {
+            <mat-error>
+                Name must be 50 letters at most
+            </mat-error>
+        } @else if(usernameTouched && nameModel.errors?.['pattern']) {
+            <mat-error>
+                Only letters, numbers, spaces, underscores and hyphens are allowed.
+            </mat-error>
+        }
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="toggleEdit('username')">
         {{ edit.username ? 'Save' : 'Edit' }}
       </button>
     </div>
-
-
     <div class="profile-row">
       <mat-form-field appearance="outline" class="profile-field">
         <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="profile.email" [readonly]="!edit.email" />
+        <input
+          matInput
+          [(ngModel)]="profile.email"
+          (ngModelChange)="onEmailInput($event)"
+          (blur)="onEmailBlur()"
+          [readonly]="!edit.email"
+          type="email"
+          #emailModel="ngModel"
+          required
+        />
+        @if((emailTouched || attemptedSave) && emailError) {
+          <mat-error>{{ emailError }}</mat-error>
+        } @else if(emailTouched && emailModel.errors?.['type']) {
+            <mat-error>Not an e-mail</mat-error>
+        } @else if(emailTouched && emailModel.errors?.['required']) {
+          <mat-error>Required</mat-error>
+        }
       </mat-form-field>
+
       <button mat-raised-button color="primary" (click)="toggleEdit('email')">
         {{ edit.email ? 'Save' : 'Edit' }}
       </button>
@@ -27,9 +72,10 @@
   </mat-card-content>
 
   <mat-card-actions class="actions">
-    <button mat-raised-button color="accent" (click)="saveAll()" [routerLink]="['/home']">Save Changes</button>
-    @if(!currUser.admin){
-    <button mat-raised-button color="warn" (click)="deleteProfile()">Delete Profile</button>
+    <button mat-raised-button color="accent" (click)="saveAll()">Save Changes</button>
+
+    @if(currUser && !currUser.admin) {
+      <button mat-raised-button color="warn" (click)="deleteProfile()">Delete Profile</button>
     }
   </mat-card-actions>
 </mat-card>

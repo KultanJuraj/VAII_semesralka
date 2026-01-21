@@ -30,3 +30,8 @@ export interface CardVersion {
     rarity:string;
     expansion:string;
 }
+
+export interface CardA {
+    card:CardI,
+    version:CardVersion
+}

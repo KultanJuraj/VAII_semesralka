@@ -5,7 +5,7 @@
 {
     @for (item of collection.items; track item.id) {
         <mat-card class = "version">
-            <img [src]="item.cardVersion.image" class = "image" [alt]="item.cardVersion.id">
+            <img [src]="item.cardVersion.image" class = "image" (click)="card(item.cardVersion.id)" [alt]="item.cardVersion.id">
         </mat-card>
     }
 }

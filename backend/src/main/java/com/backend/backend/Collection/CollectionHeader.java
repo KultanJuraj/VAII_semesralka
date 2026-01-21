@@ -7,6 +7,9 @@ import com.backend.backend.User.User;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,9 @@ public class CollectionHeader {
     private List<CollectionItem> items = new ArrayList<>();
 
     @Column(name = "name")
+    @NotBlank(message = "Name is required")
+    @Size(min = 3, max = 20, message = "Name of collection must be between 3 and 20 characters")
+    @Pattern(regexp = "^[a-zA-Z0-9_]+$", message = "Only letters, numbers, and underscores allowed")
     private String name;
 
     @Column(name = "publicity")

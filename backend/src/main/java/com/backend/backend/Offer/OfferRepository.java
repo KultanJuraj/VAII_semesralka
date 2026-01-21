@@ -1,4 +1,6 @@
 package com.backend.backend.Offer;
 
-public interface OfferRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OfferRepository extends JpaRepository<Offer, Integer> {
 }
