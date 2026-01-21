@@ -12,7 +12,7 @@ import { MatCard } from '@angular/material/card';
 @Component({
   selector: 'app-card-versions-dialog',
   standalone: true,
-  imports: [MatCard, MatButton, MatDialogContent, MatDialogActions],
+  imports: [MatCard, MatButton, MatDialogActions],
   templateUrl: './card-versions-dialog.html',
   styleUrls: ['./card-versions-dialog.css']
 })

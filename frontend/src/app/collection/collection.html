@@ -1,3 +1,7 @@
+@if(collection)
+{
+<h2 class = "title">{{collection.name}}</h2><br>
+}
 <button mat-button (click)="back()">Back</button>
 <button mat-button [routerLink]="['/card-browser', collection?.id]">Add card</button><button mat-button (click) = "changeRFlag()">Remove Card</button>
 <button mat-button [routerLink]="['/edit-collection', collection?.id]" >Edit Collection</button>
