@@ -4,5 +4,5 @@ export interface UserI {
     username:string,
     email:string,
     password:string,
-    isAdmin:boolean
+    admin:boolean
 }

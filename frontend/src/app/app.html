@@ -9,12 +9,12 @@
   
     @if(userservice.isLoggedin()) {
       <mat-icon fontIcon="person" [routerLink]="['/profile']"></mat-icon><br>
-      <button matButton (click)="logout()" class="login-button" [routerLink]="['/home']">Logout</button><br>
     } @else {
   <button matButton [routerLink]="['login']" class="login-button">Login</button><br>
     }  
-@if(loggedUser?.isAdmin) {
-<button matButton [routerLink]="['/users']">Users</button>
+@if(userservice.isLoggedin()) {
+<button matButton [routerLink]="['/users']">Users</button><br>
+<button matButton (click)="logout()" class="login-button" [routerLink]="['/home']">Logout</button>
 }
 </mat-drawer>
 <button (click)="drawer.toggle()" matButton="elevated"><mat-icon fontIcon="menu">menu</mat-icon></button>

@@ -109,7 +109,6 @@ public class CollectionService {
 
     @Transactional
     public CollectionHeader createCollectionForUser(Integer userId, String name, Boolean publicity, Integer currentUserId) {
-        // ensure authenticated user matches requested userId
         if (!userId.equals(currentUserId)) {
             throw new AccessDeniedException("User is not allowed to create a collection for another user");
         }

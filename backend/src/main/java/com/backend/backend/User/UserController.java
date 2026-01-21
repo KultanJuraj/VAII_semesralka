@@ -47,4 +47,9 @@ public class UserController {
     public List<User> getUsers(@PathVariable Integer userId) {
         return this.userService.getUsers(userId);
     }
+
+    @GetMapping("/{editingUser}/{editeUser}")
+    public User getUser(@PathVariable Integer editingUser, @PathVariable Integer editeUser) {
+        return this.userService.getUser(editingUser,editeUser);
+    }
 }

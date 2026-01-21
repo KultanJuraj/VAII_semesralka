@@ -36,7 +36,7 @@ public class User {
     private String password;
 
     @Column(name = "admin")
-    Boolean isAdmin;
+    private Boolean isAdmin;
 
     public String getUsername() {
         return username;
@@ -72,5 +72,9 @@ public class User {
 
     public Boolean isAdmin() {
         return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 }

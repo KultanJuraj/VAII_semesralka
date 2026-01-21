@@ -40,34 +40,34 @@ public class ManaValue {
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public Integer getW() {
-        return w;
+        return this.w;
     }
 
     public Integer getU() {
-        return u;
+        return this.u;
     }
 
     public Integer getB() {
-        return b;
+        return this.b;
     }
 
     public Integer getR() {
-        return r;
+        return this.r;
     }
 
     public Integer getG() {
-        return g;
+        return this.g;
     }
 
     public Integer getC() {
-        return c;
+        return this.c;
     }
 
     public Integer getTotal() {
-        return total;
+        return this.total;
     }
 }

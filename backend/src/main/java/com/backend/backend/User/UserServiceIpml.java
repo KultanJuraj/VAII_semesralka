@@ -68,4 +68,16 @@ public class UserServiceIpml implements UserService{
         return userRepository.findAll();
     }
 
-}
+    @Override
+    public User getUser(int editingUser, int editedUser) {
+        User currUser = userRepository.findById(editingUser)
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + editingUser));
+        User editeUser = userRepository.findById(editedUser)
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + editingUser));
+        if (currUser.isAdmin()) {
+            return editeUser;
+        }
+        return null;
+        }
+    }
+

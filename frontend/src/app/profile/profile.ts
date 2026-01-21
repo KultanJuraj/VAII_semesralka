@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { UserI } from '../interfaces/userI';
-import { RouterLink } from "@angular/router";
+import { RouterLink, Router } from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +18,9 @@ export class Profile {
 
   currUser!:UserI;
   private id:number = 0;
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+    private router:Router
+  ) {
   
   }
   profile = {
@@ -47,7 +49,7 @@ ngOnInit() {
     if(this.currUser && this.currUser.userId) {
     this.currUser.username = this.profile.username;
     this.currUser.email = this.profile.email;
-    this.userService.updateUser(this.profile.userId, this.currUser).subscribe(()=>console.log("Profile updated"))
+    this.userService.updateUser(this.profile.userId, this.currUser).subscribe(()=>()=>this.router.navigateByUrl('/home'))
     }
 }
 

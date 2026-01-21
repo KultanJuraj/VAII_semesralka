@@ -26,8 +26,4 @@ export class App {
   logout():void{
     this.userservice.logout();
     }
-
-    getLoggedUser(user:UserI):void {
-      this.loggedUser = user;
-    }
 }

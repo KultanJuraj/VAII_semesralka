@@ -37,27 +37,27 @@ public class Card {
     private List<CardVersion> versions = new ArrayList<>();
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public CardTypes getCardType() {
-        return cardType;
+        return this.cardType;
     }
 
     public ManaValue getManaValue() {
-        return manaValue;
+        return this.manaValue;
     }
 
     public String getOracleText() {
-        return oracleText;
+        return this.oracleText;
     }
 
     public String getFlavorText() {
-        return flavorText;
+        return this.flavorText;
     }
 
     public void addVersion(CardVersion version) {

@@ -7,12 +7,13 @@
 {
     @for (item of collection?.items; track item.id) {
         <mat-card class = "version">
-            <img [src]="item.cardVersion.image" class = "image" [alt]="item.cardVersion.id">
-        </mat-card>
-@if(removeFlag) 
-    {
+            <img [src]="item.cardVersion.image" class = "image" [alt]="item.cardVersion.id"> <br>
+            @if(removeFlag) {
         <button mat-button (click)="remove(item.cardVersion.id)">Remove card</button>
     }
+            
+        </mat-card>
+
 }
 }
 </div>

@@ -20,7 +20,7 @@ export class CardsService {
     return this.http.get<CardI[]>(this.cardUrl);
   }
   getCard(id:number):Observable<CardI>{
-    return this.http.get<CardI>(this.cardUrl + '/' + id);
+    return this.http.get<CardI>(`${this.cardUrl}/${id}`);
   }
 
 }

@@ -28,8 +28,6 @@
 
   <mat-card-actions class="actions">
     <button mat-raised-button color="accent" (click)="saveAll()" [routerLink]="['/home']">Save Changes</button>
-    @if(!currUser.admin){
     <button mat-raised-button color="warn" (click)="deleteProfile()">Delete Profile</button>
-    }
   </mat-card-actions>
 </mat-card>

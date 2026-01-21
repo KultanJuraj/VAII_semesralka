@@ -33,19 +33,19 @@ public class CardVersion {
 
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public String getImage() {
-        return image;
+        return this.image;
     }
 
     public String getRarity() {
-        return rarity;
+        return this.rarity;
     }
 
     public String getExpansion() {
-        return expansion;
+        return this.expansion;
     }
 
     public void setCard(Card card) {
@@ -53,6 +53,6 @@ public class CardVersion {
     }
 
     public Card getCard() {
-        return card;
+        return this.card;
     }
 }

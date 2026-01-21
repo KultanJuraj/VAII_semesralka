@@ -16,7 +16,5 @@ public interface CollectionHeaderRepository extends JpaRepository<CollectionHead
 
     List<CollectionHeader> getAllByPublicity(Boolean publicity);
 
-    CollectionHeader getByPublicityIsTrueAndId(Boolean publicity, Integer id);
-
     CollectionHeader getByIdAndPublicityIsTrue(Integer id, Boolean publicity);
 }

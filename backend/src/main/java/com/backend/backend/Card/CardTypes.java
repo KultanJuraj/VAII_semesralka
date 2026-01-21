@@ -24,15 +24,15 @@ public class CardTypes {
     private boolean legend;
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
     public String getSubType() {
-        return subType;
+        return this.subType;
     }
 
     public boolean isLegend() {
-        return legend;
+        return this.legend;
     }
 
     public void setId(Integer id) {
@@ -40,6 +40,6 @@ public class CardTypes {
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 }
